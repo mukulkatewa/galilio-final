@@ -18,12 +18,19 @@ const requiredEnvVars = [
 ];
 
 const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+let hasRequiredEnvVars = true;
+
 if (missingVars.length > 0) {
+  hasRequiredEnvVars = false;
   console.error('❌ CRITICAL: Missing required environment variables:', missingVars.join(', '));
   console.error('Please set these in your Vercel project settings:');
   console.error('- DATABASE_URL: Your PostgreSQL connection string');
   console.error('- JWT_SECRET: A secret key for JWT tokens (min 32 characters)');
-  process.exit(1);
+  
+  // In serverless, don't exit - let the app start and return helpful errors
+  if (process.env.VERCEL !== '1') {
+    process.exit(1);
+  }
 }
 
 // Set NODE_ENV default
@@ -106,12 +113,15 @@ if (isSentryInitialized) {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ 
-    success: true, 
-    message: 'Galilio API is running',
+  const status = hasRequiredEnvVars ? 200 : 503;
+  res.status(status).json({ 
+    success: hasRequiredEnvVars, 
+    message: hasRequiredEnvVars ? 'Galilio API is running' : 'Configuration Error: Missing environment variables',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
-    version: process.env.npm_package_version
+    version: process.env.npm_package_version,
+    configured: hasRequiredEnvVars,
+    missingVars: hasRequiredEnvVars ? undefined : missingVars
   });
 });
 
