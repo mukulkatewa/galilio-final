@@ -14,14 +14,21 @@ const Sentry = require('@sentry/node');
 // Validate required environment variables
 const requiredEnvVars = [
   'JWT_SECRET',
-  'DATABASE_URL',
-  'NODE_ENV'
+  'DATABASE_URL'
 ];
 
 const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
 if (missingVars.length > 0) {
-  console.error('Missing required environment variables:', missingVars.join(', '));
+  console.error('❌ CRITICAL: Missing required environment variables:', missingVars.join(', '));
+  console.error('Please set these in your Vercel project settings:');
+  console.error('- DATABASE_URL: Your PostgreSQL connection string');
+  console.error('- JWT_SECRET: A secret key for JWT tokens (min 32 characters)');
   process.exit(1);
+}
+
+// Set NODE_ENV default
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'production';
 }
 
 const app = express();
