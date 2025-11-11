@@ -9,7 +9,7 @@ scrape_configs:
     static_configs:
       - targets: ['host.docker.internal:5000']
         labels:
-          app: 'casino-api'
+          app: 'galilio-api'
           env: 'development'
 
   - job_name: 'node_exporter'

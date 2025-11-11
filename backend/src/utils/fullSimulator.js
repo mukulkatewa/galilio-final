@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-class FullCasinoSimulator {
+class FullGalilioSimulator {
   constructor() {
     this.token = null;
     this.baseURL = 'http://localhost:5000/api';
@@ -306,15 +306,15 @@ class FullCasinoSimulator {
       console.log(`Player Starting Balance: $10,000.00`);
       console.log(`Player Final Balance:    $${finalBalance.toFixed(2)}`);
       console.log(`Player Net Change:       $${balanceChange.toFixed(2)}`);
-      console.log(`\n✅ Casino is ${balanceChange < 0 ? 'PROFITABLE' : 'LOSING'} ✅\n`);
+      console.log(`\n✅ Galilio is ${balanceChange < 0 ? 'PROFITABLE' : 'LOSING'} ✅\n`);
     } catch (error) {
       console.error('Could not fetch final balance');
     }
   }
   
   async runFullSimulation() {
-    console.log('\n🎰 CASINO SIMULATION STARTING 🎰\n');
-    console.log('This will simulate 1000+ games across all 5 casino games');
+    console.log('\n🚀 Galilio SIMULATION STARTING 🚀\n');
+    console.log('This will simulate 1000+ games across all 5 galilio games');
     console.log('to verify house edge and profitability.\n');
     
     await this.createTestUser();

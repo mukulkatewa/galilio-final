@@ -1,6 +1,6 @@
-# Galilio Casino API
+# Galilio Gaming API
 
-A secure, scalable, and provably fair casino gaming platform backend API.
+A secure, scalable, and provably fair gaming platform backend API.
 
 ## 🚀 Features
 

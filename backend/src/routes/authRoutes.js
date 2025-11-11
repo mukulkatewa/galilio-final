@@ -3,10 +3,6 @@ const router = express.Router();
 const AuthController = require('../controllers/authController');
 const { authMiddleware } = require('../middleware/auth');
 const { registerValidation, loginValidation, validate } = require('../middleware/validation');
-const { authLimiter } = require('../middleware/rateLimiter');
-
-// Apply rate limiting to auth routes
-router.use(authLimiter);
 
 /**
  * @swagger

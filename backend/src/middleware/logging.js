@@ -24,11 +24,23 @@ const requestLogger = (req, res, next) => {
   res.send = function (body) {
     const responseTime = Date.now() - res.locals.startTime;
     
+    // Parse body safely - it might already be an object or a string
+    let parsedBody = {};
+    try {
+      if (typeof body === 'string') {
+        parsedBody = JSON.parse(body);
+      } else if (typeof body === 'object') {
+        parsedBody = body;
+      }
+    } catch (e) {
+      parsedBody = { raw: String(body) };
+    }
+    
     logger.info('Response sent', {
       requestId: res.locals.requestId,
       statusCode: res.statusCode,
       responseTime: `${responseTime}ms`,
-      body: body ? JSON.parse(body) : {}
+      body: parsedBody
     });
 
     originalSend.call(this, body);

@@ -3,7 +3,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { createServer } = require('http');
-const { apiLimiter } = require('./middleware/rateLimiter');
 const { requestLogger, errorLogger } = require('./middleware/logging');
 const { requestDurationMiddleware, getMetrics } = require('./monitoring/prometheus');
 const logger = require('./utils/logger');
@@ -76,9 +75,6 @@ if (process.env.PROMETHEUS_METRICS_ENABLED === 'true') {
   app.get('/metrics', getMetrics);
 }
 
-// Apply rate limiting to all API routes
-app.use('/api', apiLimiter);
-
 // Sentry request handler must be the first middleware
 if (isSentryInitialized) {
   app.use(Sentry.Handlers.requestHandler());
@@ -90,7 +86,7 @@ if (isSentryInitialized) {
 app.get('/api/health', (req, res) => {
   res.status(200).json({ 
     success: true, 
-    message: 'Casino API is running',
+    message: 'Galilio API is running',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
     version: process.env.npm_package_version

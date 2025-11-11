@@ -288,3 +288,93 @@ SyntaxError: "[object Object]" is not valid JSON
     }
   ]
 }
+2025-11-12 00:30:39 [[31MERROR[39M]: unhandledRejection: "[object Object]" is not valid JSON
+SyntaxError: "[object Object]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at res.send (C:\Users\shubh\Documents\galilio\galilio\backend\src\middleware\logging.js:31:25)
+    at Object.handler (C:\Users\shubh\Documents\galilio\galilio\backend\node_modules\express-rate-limit\dist\index.cjs:801:45)
+    at C:\Users\shubh\Documents\galilio\galilio\backend\node_modules\express-rate-limit\dist\index.cjs:939:16
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\Users\shubh\Documents\galilio\galilio\backend\node_modules\express-rate-limit\dist\index.cjs:825:5 {
+  "error": {},
+  "stack": "SyntaxError: \"[object Object]\" is not valid JSON\n    at JSON.parse (<anonymous>)\n    at res.send (C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\src\\middleware\\logging.js:31:25)\n    at Object.handler (C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs:801:45)\n    at C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs:939:16\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs:825:5",
+  "rejection": true,
+  "date": "Wed Nov 12 2025 00:30:39 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 34776,
+    "uid": null,
+    "gid": null,
+    "cwd": "C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend",
+    "execPath": "C:\\Program Files\\nodejs\\node.exe",
+    "version": "v24.11.0",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 92237824,
+      "heapTotal": 32059392,
+      "heapUsed": 28878984,
+      "external": 2777963,
+      "arrayBuffers": 35738
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 401496.937
+  },
+  "trace": [
+    {
+      "column": null,
+      "file": null,
+      "function": "JSON.parse",
+      "line": null,
+      "method": "parse",
+      "native": false
+    },
+    {
+      "column": 25,
+      "file": "C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\src\\middleware\\logging.js",
+      "function": "res.send",
+      "line": 31,
+      "method": "send",
+      "native": false
+    },
+    {
+      "column": 45,
+      "file": "C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs",
+      "function": "Object.handler",
+      "line": 801,
+      "method": "handler",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs",
+      "function": null,
+      "line": 939,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/process/task_queues",
+      "function": "process.processTicksAndRejections",
+      "line": 105,
+      "method": "processTicksAndRejections",
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "async C:\\Users\\shubh\\Documents\\galilio\\galilio\\backend\\node_modules\\express-rate-limit\\dist\\index.cjs",
+      "function": null,
+      "line": 825,
+      "method": null,
+      "native": false
+    }
+  ]
+}
