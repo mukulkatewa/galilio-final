@@ -1,5 +1,4 @@
 const { handleCors } = require('../_cors');
-const { parseBody } = require('../_bodyParser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
@@ -12,9 +11,22 @@ async function registerHandler(req, res) {
       return res.status(405).json({ success: false, error: 'Method not allowed' });
     }
 
-    // Parse body for serverless
-    const body = await parseBody(req);
-    const { email, username, password } = body;
+    // Get body - Vercel provides it as req.body already parsed
+    let body = req.body;
+    
+    // If body is a Buffer, parse it
+    if (Buffer.isBuffer(body)) {
+      body = JSON.parse(body.toString());
+    }
+    
+    // If body is a string, parse it
+    if (typeof body === 'string') {
+      body = JSON.parse(body);
+    }
+    
+    console.log('Register request body:', body); // Debug log
+    
+    const { email, username, password } = body || {};
 
     // Validate input
     if (!email || !username || !password) {
