@@ -12,13 +12,13 @@ A full-stack gaming platform with provably fair games, built with Node.js, Expre
 - **🐉 Dragon Tower** - Tower climbing adventure
 
 ### Platform Features
-- 🔐 Secure authentication with JWT
-- 💰 Real-time balance tracking
-- 📊 Comprehensive admin dashboard
-- 📜 Complete game history
-- 🎲 Provably fair gaming algorithms
-- 📱 Fully responsive design
-- 🌙 Dark theme UI inspired by Stake.com
+- Secure authentication with JWT
+- Real-time balance tracking
+- Comprehensive admin dashboard
+- Complete game history
+- Provably fair gaming algorithms
+- Fully responsive design
+- Dark theme UI inspired by Stake.com
 
 ## 📁 Project Structure
 
